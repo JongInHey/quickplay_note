@@ -5,6 +5,7 @@ import { Note } from "./pages/note/Note";
 import { PageNotFound } from "./pages/PageNotFound";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { Menu } from "./pages/menu/Menu";
 
 function Router() {
   return (
@@ -12,6 +13,7 @@ function Router() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/menu" element={<Menu />} />
         <Route path="/minigame/:id" element={<MiniGame />} />
         <Route path="/note" element={<Note />} />
         <Route path="/*" element={<PageNotFound />} />
