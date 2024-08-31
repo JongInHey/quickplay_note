@@ -75,7 +75,7 @@ export const Menu = () => {
                 }}
                 _active={{ bg: "red.200", transform: "scale(1.05)" }}
               >
-                반응속토 테스트 하러가기
+                반응속도 테스트 하러가기
               </Button>
             </Link>
           </Box>
