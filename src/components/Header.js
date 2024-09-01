@@ -1,9 +1,8 @@
-import { HamburgerIcon, QuestionIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   Container,
-  HStack,
   Modal,
   ModalBody,
   ModalCloseButton,

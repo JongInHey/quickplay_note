@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Image } from "@chakra-ui/react";
 import { PageTitle } from "../../components/PageTitle";
 import { Link } from "react-router-dom";
 
