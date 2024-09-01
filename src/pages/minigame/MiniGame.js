@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { PageTitle } from "../../components/PageTitle";
 import { Container } from "@chakra-ui/react";
 import { Tictactoe } from "./components/Tictactoe";
+import { SpeedCheck } from "./components/SpeedCheck";
 
 export const MiniGame = () => {
   const { id } = useParams();
@@ -20,7 +21,8 @@ export const MiniGame = () => {
         alignItems="center"
         justifyContent="center"
       >
-        {id === "0" ? <Tictactoe /> : ""}
+        {id === "0" && <Tictactoe />}
+        {id === "1" && <SpeedCheck />}
       </Container>
     </>
   );
