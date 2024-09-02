@@ -64,7 +64,9 @@ export const SpeedCheck = () => {
       if (count.current >= 3) {
         setIsState("3번 시도가 완료 되었습니다.");
         setIsText("초기화 하려면 화면을 클릭해주세요.");
-        setDesc("");
+        setDesc(
+          `일반인 평균 : 273ms 보다 작으면 평균 이상 \n 프로게이머 평균 : 150ms ~ 160ms`
+        );
         setIsColor("blue.200");
         count.current = 0;
       }
@@ -105,7 +107,9 @@ export const SpeedCheck = () => {
       >
         <Heading fontSize="24px">{isState}</Heading>
         <Text>{isText}</Text>
-        <Text>{desc}</Text>
+        <Text whiteSpace="pre-line" textAlign="center">
+          {desc}
+        </Text>
       </Box>
       <VStack gap={2} mt={3}>
         {result.map((time, index) => (
