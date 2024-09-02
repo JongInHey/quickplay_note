@@ -1,5 +1,6 @@
-import { Box, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const SpeedCheck = () => {
   const [isColor, setIsColor] = useState("purple.200");
@@ -115,6 +116,23 @@ export const SpeedCheck = () => {
         ))}
       </VStack>
       {resAverage()}
+      <Box w="100%" mt={10}>
+        <Link to="/menu">
+          <Button
+            w="100%"
+            bg="#ffb6c1"
+            color="#fff"
+            fontSize="20px"
+            fontWeight="700"
+            _hover={{
+              bg: "red.100",
+            }}
+            _active={{ bg: "red.200", transform: "scale(1.05)" }}
+          >
+            메뉴로 돌아가기
+          </Button>
+        </Link>
+      </Box>
     </>
   );
 };
