@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Heading, VStack } from "@chakra-ui/react";
+import { Box, Button, Grid, Heading, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -56,7 +56,12 @@ export const HardMode = () => {
   return (
     <>
       <VStack spacing={8} mt={5}>
-        <Heading fontSize="20px">{status}</Heading>
+        <Heading fontSize="20px" textAlign="center">
+          {status}
+          <Text fontSize="16px" fontWeight="400">
+            연속 4칸 맞추면 승리!
+          </Text>
+        </Heading>
         <Grid templateColumns="repeat(5, 1fr)" gap={2}>
           {Array(25)
             .fill(null)
