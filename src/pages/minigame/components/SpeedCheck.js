@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
 export const SpeedCheck = () => {
@@ -12,6 +12,7 @@ export const SpeedCheck = () => {
   const clickTimer = useRef(null);
   const startTime = useRef(0);
   const endTime = useRef(0);
+  const count = useRef(0);
 
   const handleStart = () => {
     if (isState === "시작") {
@@ -25,9 +26,8 @@ export const SpeedCheck = () => {
         setIsText("클릭해주세요!");
         setDesc("");
         setIsColor("green.300");
-      }, Math.floor(Math.random() * 1000) + 2000);
-
-      startTime.current = new Date();
+        startTime.current = new Date();
+      }, Math.floor(Math.random() * 2000) + 1000);
     } else if (isState === "준비") {
       clearTimeout(clickTimer.current);
 
@@ -40,27 +40,46 @@ export const SpeedCheck = () => {
       setIsText("다음 준비화면에서 초록색이 되었을때 클릭!!");
       setDesc("시작하시려면 화면을 클릭해주세요.");
       setIsColor("purple.200");
+    } else if (isState === "3번 시도가 완료 되었습니다.") {
+      setResult([]);
+      setIsState("시작");
+      setIsText("다음 준비화면에서 초록색이 되었을때 클릭!!");
+      setDesc("시작하시려면 화면을 클릭해주세요.");
+      setIsColor("purple.200");
     } else if (isState === "클릭!") {
       endTime.current = new Date();
+
+      setResult((prevResults) => {
+        return [...prevResults, endTime.current - startTime.current];
+      });
+
       setIsState("시작");
       setIsText("다음 준비화면에서 초록색이 되었을때 클릭!!");
       setDesc("시작하시려면 화면을 클릭해주세요.");
       setIsColor("purple.200");
 
-      setResult(() => {
-        return [endTime.current - startTime.current];
-      });
+      count.current += 1;
+
+      if (count.current >= 3) {
+        setIsState("3번 시도가 완료 되었습니다.");
+        setIsText("초기화 하려면 화면을 클릭해주세요.");
+        setDesc("");
+        setIsColor("blue.200");
+        count.current = 0;
+      }
     }
   };
   const resAverage = () => {
     const average =
       result.length === 0 ? null : (
         <Text fontSize="24px" mt={4}>
-          반응속도 평균 시간 :
-          {result.reduce((acc, curr) => acc + curr) / result.length} ms
+          반응속도 평균 시간 :{" "}
+          {(result.reduce((acc, curr) => acc + curr) / result.length).toFixed(
+            2
+          )}{" "}
+          ms
         </Text>
       );
-    console.log(average);
     return average;
   };
   return (
@@ -72,7 +91,6 @@ export const SpeedCheck = () => {
         w="100%"
         h="250px"
         bg={isColor}
-        transitionDuration="0.2s"
         borderRadius="10px"
         display="flex"
         flexDirection="column"
@@ -88,6 +106,14 @@ export const SpeedCheck = () => {
         <Text>{isText}</Text>
         <Text>{desc}</Text>
       </Box>
+      <VStack gap={2} mt={3}>
+        {result.map((time, index) => (
+          <Text key={index}>
+            {index + 1} 번째 시도 :{" "}
+            <span style={{ fontWeight: "600" }}>{time}</span> ms
+          </Text>
+        ))}
+      </VStack>
       {resAverage()}
     </>
   );
