@@ -2,8 +2,8 @@ import { Box, Button, Grid, Heading, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const Tictactoe = () => {
-  const [squares, setSquares] = useState(Array(9).fill(null));
+export const HardMode = () => {
+  const [squares, setSquares] = useState(Array(25).fill(null));
   const [isNext, setIsNext] = useState(true);
   const [status, setStatus] = useState();
 
@@ -32,12 +32,12 @@ export const Tictactoe = () => {
     return (
       <Box
         as="button"
-        w="100px"
-        h="100px"
+        w="60px"
+        h="60px"
         display="flex"
         alignItems="center"
         justifyContent="center"
-        fontSize="40px"
+        fontSize="30px"
         bg="#ffb6c1"
         borderRadius="10px"
         onClick={() => handleClick(i)}
@@ -49,7 +49,7 @@ export const Tictactoe = () => {
   };
 
   const handleReset = () => {
-    setSquares(Array(9).fill(null));
+    setSquares(Array(25).fill(null));
     setIsNext(true);
   };
 
@@ -57,8 +57,8 @@ export const Tictactoe = () => {
     <>
       <VStack spacing={8} mt={5}>
         <Heading fontSize="20px">{status}</Heading>
-        <Grid templateColumns="repeat(3, 1fr)" gap={2}>
-          {Array(9)
+        <Grid templateColumns="repeat(5, 1fr)" gap={2}>
+          {Array(25)
             .fill(null)
             .map((_, i) => (
               <Box key={i}>{renderSquare(i)}</Box>
@@ -79,7 +79,7 @@ export const Tictactoe = () => {
           리셋
         </Button>
         <Box w="100%">
-          <Link to="/minigame/2">
+          <Link to="/minigame/0">
             <Button
               w="100%"
               bg="#ffb6c1"
@@ -91,7 +91,7 @@ export const Tictactoe = () => {
               }}
               _active={{ bg: "red.200", transform: "scale(1.05)" }}
             >
-              더 어려운 난이도 하러가기
+              쉬운 난이도로 가기
             </Button>
           </Link>
         </Box>
@@ -118,19 +118,59 @@ export const Tictactoe = () => {
 };
 
 const calWinner = (squares) => {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
+  const lines = [];
+  // 가로줄
+  for (let row = 0; row < 5; row++) {
+    for (let col = 0; col <= 1; col++) {
+      lines.push([
+        row * 5 + col,
+        row * 5 + col + 1,
+        row * 5 + col + 2,
+        row * 5 + col + 3,
+      ]);
+    }
+  }
+  // 세로줄
+  for (let col = 0; col < 5; col++) {
+    for (let row = 0; row <= 1; row++) {
+      lines.push([
+        row * 5 + col,
+        (row + 1) * 5 + col,
+        (row + 2) * 5 + col,
+        (row + 3) * 5 + col,
+      ]);
+    }
+  }
+  // 대각선 (왼쪽 위에서 오른쪽 아래로)
+  for (let row = 0; row <= 1; row++) {
+    for (let col = 0; col <= 1; col++) {
+      lines.push([
+        row * 5 + col,
+        (row + 1) * 5 + col + 1,
+        (row + 2) * 5 + col + 2,
+        (row + 3) * 5 + col + 3,
+      ]);
+    }
+  }
+  // 대각선 (오른쪽 위에서 왼쪽 아래로)
+  for (let row = 0; row <= 1; row++) {
+    for (let col = 3; col < 5; col++) {
+      lines.push([
+        row * 5 + col,
+        (row + 1) * 5 + col - 1,
+        (row + 2) * 5 + col - 2,
+        (row + 3) * 5 + col - 3,
+      ]);
+    }
+  }
   for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+    const [a, b, c, d] = lines[i];
+    if (
+      squares[a] &&
+      squares[a] === squares[b] &&
+      squares[a] === squares[c] &&
+      squares[a] === squares[d]
+    ) {
       return squares[a];
     }
   }

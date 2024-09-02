@@ -3,6 +3,7 @@ import { PageTitle } from "../../components/PageTitle";
 import { Container } from "@chakra-ui/react";
 import { Tictactoe } from "./components/Tictactoe";
 import { SpeedCheck } from "./components/SpeedCheck";
+import { HardMode } from "./components/HardMode";
 
 export const MiniGame = () => {
   const { id } = useParams();
@@ -23,6 +24,7 @@ export const MiniGame = () => {
       >
         {id === "0" && <Tictactoe />}
         {id === "1" && <SpeedCheck />}
+        {id === "2" && <HardMode />}
       </Container>
     </>
   );
