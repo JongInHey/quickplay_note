@@ -52,13 +52,17 @@
 
 - git Url - https://github.com/JongInHey/quickplay_note
 
-- site url - https://jonginhey.github.io/dopa_check
+- site url - https://jonginhey.github.io/quickplay_note
 
 <p>
-    <img src="" alt="home" width="200px">
-    <img src="" alt="qna" width="200px">
-    <img src="" alt="result" width="200px">
-    <img src="" alt="modal" width="200px">
+    <img src="https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MDRfMTY2/MDAxNzI1Mzc5NTMwNTU2.VlPehnnsIUOzsdwwKqHlrmgPwZTqR1l3luh_lmdsy9Eg.kxp5UkSqKsSuIbNHQBdYiFE1qj_UIB_qfqa-ATh4IDcg.JPEG/home.jpg" alt="home" width="200px">
+    <img src="https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MDRfMTQ3/MDAxNzI1Mzc5NTMwNTQw.PgpiwAEuZsEIsV5XcN_vdy4ITvxKySLl7n6WJV6LfyAg.9iVJFi6Wd6cbbxiuib1ETmFEF0UYvdhjv_-m25d0ksEg.JPEG/menu.jpg" alt="menu" width="200px">
+    <img src="https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MDRfMTQ3/MDAxNzI1Mzc5NTMwODc2.by6fACR9JkDT4CWG1-cPksir6i9egS60Sp0FeXyvEp8g.qzcMY95mPoFC-5DocglF-sjFj1z-IYta7-KB-drDShYg.JPEG/tictactoe.jpg" alt="tictactoe" width="200px">
+    <img src="https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MDRfMzcg/MDAxNzI1Mzc5NTMwNTM5.nDbX5A5xGGYxZBoMqKmf4xUpelr05LXtBX03hzwpIzUg.TGK8ERfFP9InpDpcy830vxHsFLH37OL63bj_AvpzVUUg.JPEG/speedCheck.jpg" alt="speedtest" width="200px">
+    <img src="https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MDRfMjc1/MDAxNzI1Mzc5NTMwNTUz.Tt4g3Trno2Lg8C1YA-cclFX0qphQFFlFZGQ3QOb0Vzkg.vYB9gAEwuXQIfCJR8IldqDa6cWNJ3v0jHISxnaCAHvcg.JPEG/speedResult.jpg" alt="speedtestResult" width="200px">
+    <img src="https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MDRfMTcg/MDAxNzI1Mzc5NTY0MjA5.6t_vXuEfLBHJiB9x63WidFWwUJ8yWCHbHEoV_CDQCSEg.VjOoxhx7FGBtzS2bIpC_k0PnajoVukOvwm4ekbt0JGkg.JPEG/noteList.jpg" alt="noteList" width="200px">
+    <img src="https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MDRfMjk4/MDAxNzI1Mzc5NTY0MjEx.WVj4POF-zYX-1ni3T_p2ftudG7uNyogTYjEsrOAaCzQg.68-yj8hMWKnAdTnEzFKG9YxPLmVURVy1n6L5RiuPjKwg.JPEG/checkList.jpg" alt="checkList" width="200px">
+    <img src="https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MDRfMzAw/MDAxNzI1Mzc5NTY0MjA5.33wJKfsHyX2x0Hx3M7W6QUa8aVVjkbXHvnXeZVRjg-kg.q0eTPq32yT_FMB-lLj-c99s3pBOh9v7beVJR6JooO2Eg.JPEG/deleteNote.jpg" alt="deleteNote" width="200px">
 </p>
 
 1. Home - 메인 페이지
