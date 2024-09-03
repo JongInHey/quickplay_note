@@ -33,10 +33,8 @@ export const DeleteNote = ({
               : "이 노트를 삭제하시겠습니까?"}
           </AlertDialogBody>
           <AlertDialogFooter>
-            <Button variant="outline" mr={4} ref={cancelRef} onClick={onClose}>
-              취소
-            </Button>
             <Button
+              mr={4}
               colorScheme="red"
               onClick={() => {
                 onClose();
@@ -44,6 +42,9 @@ export const DeleteNote = ({
               }}
             >
               삭제
+            </Button>
+            <Button variant="outline" ref={cancelRef} onClick={onClose}>
+              취소
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
