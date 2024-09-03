@@ -88,7 +88,7 @@ export const SpeedCheck = () => {
   return (
     <>
       <Heading fontSize="20px" mb={4}>
-        반응속도 체크!
+        반응속도 체크! 기회는 3번!
       </Heading>
       <Box
         w="100%"
