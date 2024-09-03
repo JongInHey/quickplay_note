@@ -18,6 +18,7 @@ export const NoteForm = ({ todos, setTodos }) => {
         id: Date.now(),
         title: memo,
         date: `${year}년 ${month}월 ${day}일`,
+        finish: false,
       },
     ]);
 

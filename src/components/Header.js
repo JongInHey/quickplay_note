@@ -5,7 +5,6 @@ import {
   Container,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
@@ -52,7 +51,6 @@ export const Header = () => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader opacity="0.7">무엇을 해볼까요?</ModalHeader>
-          <ModalCloseButton />
           <ModalBody mt={3}>
             <VStack
               alignItems="flex-start"

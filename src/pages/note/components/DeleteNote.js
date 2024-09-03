@@ -40,9 +40,7 @@ export const DeleteNote = ({
               colorScheme="red"
               onClick={() => {
                 onClose();
-                {
-                  isDeleteAll ? onClickDelete() : onClickDelete(currentId);
-                }
+                isDeleteAll ? onClickDelete() : onClickDelete(currentId);
               }}
             >
               삭제
