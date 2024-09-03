@@ -1,76 +1,88 @@
-import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { DeleteIcon } from "@chakra-ui/icons";
+import { Box, Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
+import { DeleteNote } from "./DeleteNote";
+import { NoteForm } from "./NoteForm";
 
 export const Todo = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
-
   const [todos, setTodos] = useState(() => {
     const resTodo = localStorage.getItem("todos");
     return resTodo ? JSON.parse(resTodo) : [];
   });
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = useRef();
+  const [currentId, setCurrentId] = useState();
+  const [isDeleteAll, setIsDeleteAll] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  const { register, handleSubmit, reset } = useForm();
-
-  const onSubmit = (data) => {
-    const { todo: memo } = data;
-
-    setTodos([
-      ...todos,
-      {
-        id: Date.now(),
-        title: memo,
-        date: `${year}년 ${month}월 ${day}일`,
-      },
-    ]);
-
-    reset();
+  const onClickDelete = (id) => {
+    if (isDeleteAll) {
+      setTodos([]);
+    } else {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    }
   };
 
   return (
     <Box>
-      <Heading textAlign="center">📝NOTE</Heading>
-      <Box as="form" onSubmit={handleSubmit(onSubmit)} mt={4}>
-        <Input
-          {...register("todo", { required: "빈 내용 말고~😈" })}
-          placeholder="내용을 적어주세요."
-          border="1px solid #dbdbdb"
-          borderRadius="10px"
-        />
-      </Box>
+      <NoteForm todos={todos} setTodos={setTodos} />
       <Box w="100%" borderRadius="10px" mt={5}>
         {todos.length > 0 ? (
           <>
             {todos.map((data, i) => (
-              <Box key={data.id} mb={3}>
-                <Flex alignItems="center">
+              <Box key={data.id}>
+                <Flex alignItems="center" wordBreak="keep-all">
                   <Text mr={2}>{i + 1}.</Text>
                   <Flex
                     w="100%"
                     alignItems="center"
                     justifyContent="space-between"
                   >
-                    <Text maxW="260px">{data.title}</Text>
-                    <Text fontSize="14px" opacity="0.6">
+                    <Text maxW="205px">{data.title}</Text>
+                    <Text fontSize="14px" opacity="0.6" mr={4}>
                       {data.date}
                     </Text>
                   </Flex>
+                  <DeleteIcon
+                    cursor="pointer"
+                    color="red.300"
+                    onClick={() => {
+                      onOpen();
+                      setCurrentId(data.id);
+                      setIsDeleteAll(false);
+                    }}
+                  />
                 </Flex>
-                <Box w="100%" border="1px solid #ededed" />
+                <Box w="100%" border="1px solid #ededed" mt={2} mb={3} />
               </Box>
             ))}
+            <Button
+              colorScheme="red"
+              float="right"
+              onClick={() => {
+                setIsDeleteAll(true);
+                onOpen();
+              }}
+            >
+              전부 삭제
+            </Button>
           </>
         ) : (
           <Text textAlign="center">Note를 작성해주세요.</Text>
         )}
       </Box>
+      <DeleteNote
+        isOpen={isOpen}
+        onClose={onClose}
+        cancelRef={cancelRef}
+        currentId={currentId}
+        onClickDelete={onClickDelete}
+        isDeleteAll={isDeleteAll}
+      />
     </Box>
   );
 };

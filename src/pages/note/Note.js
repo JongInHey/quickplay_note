@@ -17,14 +17,12 @@ export const Note = () => {
         p="80px 10px"
         pos="relative"
       >
-        <Box
-          onClick={() => navi(-1)}
-          cursor="pointer"
-          pos="absolute"
-          left="3%"
-          top="10%"
-        >
-          <ChevronLeftIcon fontSize="26px" />
+        <Box>
+          <ChevronLeftIcon
+            fontSize="26px"
+            onClick={() => navi(-1)}
+            cursor="pointer"
+          />
         </Box>
         <Todo />
       </Container>
