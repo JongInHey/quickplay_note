@@ -4,7 +4,7 @@ import { Todo } from "./components/Todo";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 
-export const Note = () => {
+export const Note = ({ colorMode }) => {
   const navi = useNavigate();
   return (
     <>
@@ -13,7 +13,7 @@ export const Note = () => {
         maxW="450px"
         w="100%"
         minH="100vh"
-        bg="#f4f3ee"
+        bg={colorMode === "light" ? "#f4f3ee" : "#2b2b2b"}
         p="80px 10px"
         pos="relative"
       >

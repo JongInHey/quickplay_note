@@ -62,8 +62,7 @@ export const Todo = () => {
                 전부 삭제
               </Button>
               <Button
-                colorScheme="cyan"
-                color="#fff"
+                colorScheme="green"
                 onClick={() => {
                   if (isCheckBox) {
                     resetCheck();

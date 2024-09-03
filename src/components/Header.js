@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Container,
+  Flex,
   Modal,
   ModalBody,
   ModalContent,
@@ -10,6 +11,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  useColorMode,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
@@ -17,6 +19,7 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Container
       maxW="450px"
@@ -50,7 +53,51 @@ export const Header = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader opacity="0.7">무엇을 해볼까요?</ModalHeader>
+          <ModalHeader opacity="0.7">
+            <Flex justifyContent="space-between">
+              무엇을 해볼까요?
+              <Box onClick={toggleColorMode}>
+                {colorMode === "light" ? (
+                  <Box
+                    w="70px"
+                    h="30px"
+                    borderRadius="20px"
+                    bg="gray.400"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="flex-start"
+                  >
+                    <Box
+                      ml={1}
+                      w="30px"
+                      h="30px"
+                      bg="#fff"
+                      borderRadius="50%"
+                    />
+                  </Box>
+                ) : (
+                  <Box
+                    w="70px"
+                    h="30px"
+                    borderRadius="20px"
+                    bg="#1df57f"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="flex-end"
+                  >
+                    <Box
+                      mr={1}
+                      w="30px"
+                      h="30px"
+                      bg="white"
+                      borderRadius="50%"
+                    />
+                  </Box>
+                )}
+              </Box>
+            </Flex>
+          </ModalHeader>
+
           <ModalBody mt={3}>
             <VStack
               alignItems="flex-start"

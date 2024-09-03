@@ -6,7 +6,7 @@ import { SpeedCheck } from "./components/SpeedCheck";
 import { HardMode } from "./components/HardMode";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 
-export const MiniGame = () => {
+export const MiniGame = ({ colorMode }) => {
   const { id } = useParams();
   const navi = useNavigate();
 
@@ -17,7 +17,7 @@ export const MiniGame = () => {
         maxW="450px"
         w="100%"
         minH="100vh"
-        bg="#f4f3ee"
+        bg={colorMode === "light" ? "#f4f3ee" : "#2b2b2b"}
         p="80px 10px"
         display="flex"
         flexDirection="column"
