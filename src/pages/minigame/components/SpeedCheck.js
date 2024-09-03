@@ -101,6 +101,7 @@ export const SpeedCheck = () => {
         alignItems="center"
         lineHeight="28px"
         cursor="pointer"
+        color="#fff"
         onClick={() => {
           handleStart();
         }}

@@ -38,7 +38,7 @@ export const Tictactoe = () => {
         alignItems="center"
         justifyContent="center"
         fontSize="40px"
-        bg="#ffb6c1"
+        bg="red.100"
         borderRadius="10px"
         onClick={() => handleClick(i)}
         _active={{ bg: "red.200", transform: "scale(1.05)" }}

@@ -37,13 +37,13 @@ export const Header = () => {
     >
       <Box>
         <Link to={"/"}>
-          <Text fontSize="22px" fontWeight="700">
+          <Text fontSize="18px" fontWeight="700">
             QuickPlay_Note
           </Text>
         </Link>
       </Box>
       <Box>
-        <Text fontSize="22px" fontWeight="700" cursor="pointer">
+        <Text fontSize="20px" fontWeight="700" cursor="pointer">
           <HamburgerIcon onClick={onOpen} />
         </Text>
       </Box>
