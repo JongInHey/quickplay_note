@@ -34,6 +34,7 @@ export const Todo = () => {
   const onClickDelete = (id) => {
     if (isDeleteAll) {
       setTodos([]);
+      setIsCheckBox(false);
     } else {
       setTodos(todos.filter((todo) => todo.id !== id));
     }
@@ -104,8 +105,8 @@ export const Todo = () => {
               <Button
                 colorScheme="red"
                 onClick={() => {
-                  setIsDeleteAll(true);
                   onOpen();
+                  setIsDeleteAll(true);
                 }}
               >
                 전부 삭제
