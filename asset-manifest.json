@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/quickplay_note/static/js/main.d1c68525.js",
+    "main.js": "/quickplay_note/static/js/main.206476b0.js",
     "index.html": "/quickplay_note/index.html",
-    "main.d1c68525.js.map": "/quickplay_note/static/js/main.d1c68525.js.map"
+    "main.206476b0.js.map": "/quickplay_note/static/js/main.206476b0.js.map"
   },
   "entrypoints": [
-    "static/js/main.d1c68525.js"
+    "static/js/main.206476b0.js"
   ]
 }
