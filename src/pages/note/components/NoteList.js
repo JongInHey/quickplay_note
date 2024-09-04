@@ -55,15 +55,6 @@ export const NoteList = ({
                 setIsEdit(false);
               }}
             />
-            {/* <DeleteIcon
-              cursor="pointer"
-              color="red.300"
-              onClick={() => {
-                onOpen();
-                setCurrentId(data.id);
-                setIsDeleteAll(false);
-              }}
-            /> */}
           </Flex>
           <Box w="100%" border="1px solid #ededed" mt={2} mb={3} />
         </Box>

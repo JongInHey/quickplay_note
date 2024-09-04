@@ -10,7 +10,7 @@ import {
   Input,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 export const DeleteNote = ({
@@ -20,6 +20,8 @@ export const DeleteNote = ({
   currentId,
   onClickDelete,
   isDeleteAll,
+  todos,
+  setTodos,
   setIsEdit,
   isEdit,
 }) => {
@@ -28,45 +30,56 @@ export const DeleteNote = ({
   const month = now.getMonth() + 1;
   const day = now.getDate();
 
-  const [todos, setTodos] = useState(() => {
-    const editTodo = localStorage.getItem("todos");
-    return editTodo ? JSON.parse(editTodo) : [];
-  });
-
   const { register, handleSubmit, reset, setValue } = useForm();
 
-  const onSubmit = (data) => {
-    const { todo: memo } = data;
+  useEffect(() => {
+    if (isEdit && currentId) {
+      const curTodo = todos.find((todo) => todo.id === currentId);
+      if (curTodo) {
+        setValue("todo", curTodo.title);
+      }
+    }
+  }, [isEdit, currentId, todos, setValue]);
 
-    setTodos([
-      ...todos,
-      {
-        id: Date.now(),
-        title: memo,
-        date: `${year}년 ${month}월 ${day}일`,
-        finish: false,
-      },
-    ]);
+  const onSubmit = (data) => {
+    if (isEdit) {
+      setTodos((prevTodo) =>
+        prevTodo.map((todo) =>
+          todo.id === currentId
+            ? {
+                ...todo,
+                title: data.todo,
+                date: `${year}년 ${month}월 ${day}일`,
+              }
+            : todo
+        )
+      );
+      setIsEdit(false);
+    }
 
     reset();
+    onClose();
   };
 
-  const onEditTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id === id));
-    setValue("_edit", todos[0].title);
-    console.log(todos[0].title);
+  const editClose = () => {
+    onClose();
+    setIsEdit(false);
   };
 
   return (
     <AlertDialog
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={editClose}
       leastDestructiveRef={cancelRef}
     >
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader>
-            {isDeleteAll ? "모든 노트 삭제" : "노트 삭제 또는 수정"}
+            {isDeleteAll ? (
+              "모든 노트 삭제"
+            ) : (
+              <>{isEdit ? "노트 수정" : "노트 삭제 또는 수정"}</>
+            )}
           </AlertDialogHeader>
           <ModalCloseButton />
           <AlertDialogBody>
@@ -77,12 +90,19 @@ export const DeleteNote = ({
                 {isEdit ? (
                   <Box as="form" onSubmit={handleSubmit(onSubmit)}>
                     <Input
-                      {...register("todo")}
-                      value={todos[0].title}
+                      {...register("todo", { required: true })}
                       placeholder="내용을 적어주세요."
                       border="1px solid #dbdbdb"
                       borderRadius="10px"
                     />
+                    <Button
+                      type="submit"
+                      mt={5}
+                      colorScheme="blue"
+                      float="right"
+                    >
+                      저장
+                    </Button>
                   </Box>
                 ) : (
                   "이 노트를 삭제하시겠습니까? 수정하시겠습니까?"
@@ -91,9 +111,7 @@ export const DeleteNote = ({
             )}
           </AlertDialogBody>
           <AlertDialogFooter>
-            {isEdit ? (
-              ""
-            ) : (
+            {isEdit ? null : (
               <Button
                 mr={4}
                 colorScheme="red"
@@ -106,20 +124,22 @@ export const DeleteNote = ({
               </Button>
             )}
             {isDeleteAll ? (
-              <Button variant="outline" ref={cancelRef} onClick={onClose}>
-                취소
-              </Button>
+              <>
+                <Button variant="outline" ref={cancelRef} onClick={onClose}>
+                  취소
+                </Button>
+              </>
             ) : (
-              <Button
-                colorScheme="green"
-                onClick={() => {
-                  onEditTodo(currentId);
-                  setIsEdit(true);
-                  onSubmit();
-                }}
-              >
-                수정
-              </Button>
+              !isEdit && (
+                <Button
+                  colorScheme="green"
+                  onClick={() => {
+                    setIsEdit(true);
+                  }}
+                >
+                  수정
+                </Button>
+              )
             )}
           </AlertDialogFooter>
         </AlertDialogContent>

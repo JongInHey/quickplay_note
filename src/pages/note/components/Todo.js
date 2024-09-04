@@ -84,6 +84,8 @@ export const Todo = () => {
       </Box>
       <DeleteNote
         isOpen={isOpen}
+        todos={todos}
+        setTodos={setTodos}
         onClose={onClose}
         cancelRef={cancelRef}
         currentId={currentId}
