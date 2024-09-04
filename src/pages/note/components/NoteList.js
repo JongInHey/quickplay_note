@@ -1,5 +1,5 @@
-import { DeleteIcon } from "@chakra-ui/icons";
 import { Box, Checkbox, Flex, Text } from "@chakra-ui/react";
+import { CiMenuKebab } from "react-icons/ci";
 
 export const NoteList = ({
   todos,
@@ -8,6 +8,7 @@ export const NoteList = ({
   onOpen,
   setCurrentId,
   setIsDeleteAll,
+  setIsEdit,
 }) => {
   const onclickFinish = (id) => {
     setTodos(
@@ -45,7 +46,16 @@ export const NoteList = ({
                 {data.date}
               </Text>
             </Flex>
-            <DeleteIcon
+            <CiMenuKebab
+              cursor="pointer"
+              onClick={() => {
+                onOpen();
+                setCurrentId(data.id);
+                setIsDeleteAll(false);
+                setIsEdit(false);
+              }}
+            />
+            {/* <DeleteIcon
               cursor="pointer"
               color="red.300"
               onClick={() => {
@@ -53,7 +63,7 @@ export const NoteList = ({
                 setCurrentId(data.id);
                 setIsDeleteAll(false);
               }}
-            />
+            /> */}
           </Flex>
           <Box w="100%" border="1px solid #ededed" mt={2} mb={3} />
         </Box>

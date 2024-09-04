@@ -18,6 +18,7 @@ export const Todo = () => {
   const cancelRef = useRef();
   const [currentId, setCurrentId] = useState();
   const [isDeleteAll, setIsDeleteAll] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -50,6 +51,7 @@ export const Todo = () => {
               onOpen={onOpen}
               setCurrentId={setCurrentId}
               setIsDeleteAll={setIsDeleteAll}
+              setIsEdit={setIsEdit}
             />
             <Flex justifyContent="space-between" mt={10}>
               <Button
@@ -87,6 +89,8 @@ export const Todo = () => {
         currentId={currentId}
         onClickDelete={onClickDelete}
         isDeleteAll={isDeleteAll}
+        setIsEdit={setIsEdit}
+        isEdit={isEdit}
       />
     </Box>
   );
