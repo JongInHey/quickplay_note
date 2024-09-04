@@ -58,41 +58,51 @@ export const Header = () => {
               무엇을 해볼까요?
               <Box onClick={toggleColorMode}>
                 {colorMode === "light" ? (
-                  <Box
-                    w="70px"
-                    h="30px"
-                    borderRadius="20px"
-                    bg="gray.400"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="flex-start"
-                  >
+                  <>
+                    <Text fontSize="14px" textAlign="center" opacity="0.5">
+                      라이트모드
+                    </Text>
                     <Box
-                      ml={1}
-                      w="30px"
+                      w="70px"
                       h="30px"
-                      bg="#fff"
-                      borderRadius="50%"
-                    />
-                  </Box>
+                      borderRadius="20px"
+                      bg="gray.400"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="flex-start"
+                    >
+                      <Box
+                        ml={1}
+                        w="30px"
+                        h="30px"
+                        bg="#fff"
+                        borderRadius="50%"
+                      />
+                    </Box>
+                  </>
                 ) : (
-                  <Box
-                    w="70px"
-                    h="30px"
-                    borderRadius="20px"
-                    bg="#1df57f"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="flex-end"
-                  >
+                  <>
+                    <Text fontSize="14px" textAlign="center" opacity="0.5">
+                      다크모드
+                    </Text>
                     <Box
-                      mr={1}
-                      w="30px"
+                      w="70px"
                       h="30px"
-                      bg="white"
-                      borderRadius="50%"
-                    />
-                  </Box>
+                      borderRadius="20px"
+                      bg="#1df57f"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="flex-end"
+                    >
+                      <Box
+                        mr={1}
+                        w="30px"
+                        h="30px"
+                        bg="white"
+                        borderRadius="50%"
+                      />
+                    </Box>
+                  </>
                 )}
               </Box>
             </Flex>
