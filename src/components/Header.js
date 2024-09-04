@@ -70,6 +70,7 @@ export const Header = () => {
                       display="flex"
                       alignItems="center"
                       justifyContent="flex-start"
+                      cursor="pointer"
                     >
                       <Box
                         ml={1}
@@ -93,6 +94,7 @@ export const Header = () => {
                       display="flex"
                       alignItems="center"
                       justifyContent="flex-end"
+                      cursor="pointer"
                     >
                       <Box
                         mr={1}

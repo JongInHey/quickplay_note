@@ -36,17 +36,18 @@ export const NoteList = ({
             )}
             <Flex w="100%" alignItems="center" justifyContent="space-between">
               {data.finish === true ? (
-                <Text maxW="205px" textDecoration="line-through">
+                <Text maxW="180px" textDecoration="line-through">
                   {data.title}
                 </Text>
               ) : (
-                <Text maxW="200px">{data.title}</Text>
+                <Text maxW="180px">{data.title}</Text>
               )}
-              <Text fontSize="14px" opacity="0.6" mr={4}>
+              <Text fontSize="14px" opacity="0.6" mr={2}>
                 {data.date}
               </Text>
             </Flex>
             <CiMenuKebab
+              fontSize="20px"
               cursor="pointer"
               onClick={() => {
                 onOpen();
