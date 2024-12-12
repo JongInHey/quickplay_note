@@ -5,6 +5,7 @@ import { Tictactoe } from "./components/Tictactoe";
 import { SpeedCheck } from "./components/SpeedCheck";
 import { HardMode } from "./components/HardMode";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { PageNotFound } from "../PageNotFound";
 
 export const MiniGame = ({ colorMode }) => {
   const { id } = useParams();
@@ -12,32 +13,38 @@ export const MiniGame = ({ colorMode }) => {
 
   return (
     <>
-      <PageTitle titleName={"MiniGame"} />
-      <Container
-        maxW="450px"
-        w="100%"
-        minH="100vh"
-        bg={colorMode === "light" ? "#f4f3ee" : "#2b2b2b"}
-        p="80px 10px"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        pos="relative"
-      >
-        <Box
-          onClick={() => navi(-1)}
-          cursor="pointer"
-          pos="absolute"
-          left="3%"
-          top="10%"
-        >
-          <ChevronLeftIcon fontSize="26px" />
-        </Box>
-        {id === "0" && <Tictactoe />}
-        {id === "1" && <SpeedCheck />}
-        {id === "2" && <HardMode />}
-      </Container>
+      {id === "0" || id === "1" || id === "2" ? (
+        <>
+          <PageTitle titleName={"MiniGame"} />
+          <Container
+            maxW="450px"
+            w="100%"
+            minH="100vh"
+            bg={colorMode === "light" ? "#f4f3ee" : "#2b2b2b"}
+            p="80px 10px"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            pos="relative"
+          >
+            <Box
+              onClick={() => navi(-1)}
+              cursor="pointer"
+              pos="absolute"
+              left="3%"
+              top="10%"
+            >
+              <ChevronLeftIcon fontSize="26px" />
+            </Box>
+            {id === "0" && <Tictactoe />}
+            {id === "1" && <SpeedCheck />}
+            {id === "2" && <HardMode />}
+          </Container>
+        </>
+      ) : (
+        <PageNotFound />
+      )}
     </>
   );
 };
